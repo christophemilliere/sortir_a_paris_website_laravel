@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Monument;
+use App\Models\Monument;
 
 class HomeController extends Controller
 {

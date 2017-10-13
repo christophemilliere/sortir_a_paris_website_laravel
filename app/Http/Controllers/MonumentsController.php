@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Monument;
+use App\Models\Monument;
 use Illuminate\Http\Request;
 
 class MonumentsController extends Controller
