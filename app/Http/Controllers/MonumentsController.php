@@ -60,6 +60,7 @@ class MonumentsController extends Controller
     public function edit(Monument $monument)
     {
         //
+        return view('monuments.edit')->with('monument',$monument);
     }
 
     /**
@@ -71,7 +72,10 @@ class MonumentsController extends Controller
      */
     public function update(Request $request, Monument $monument)
     {
-        //
+        // update Monument        
+        $monument->update($request->all());
+        return redirect('/home');
+
     }
 
     /**
@@ -83,5 +87,7 @@ class MonumentsController extends Controller
     public function destroy(Monument $monument)
     {
         //
+        $monument->delete();
+        return redirect('/home');
     }
 }

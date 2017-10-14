@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashbord', 'MonumentsController@index');
+// Route::get('/monuments/create', 'MonumentsController@create');
+// Route::post('/monuments', 'MonumentsController@store');
 
-Route::get('/monuments/create', 'MonumentsController@create');
-Route::post('/monuments', 'MonumentsController@store');
+Route::resource('monuments', 'MonumentsController');
