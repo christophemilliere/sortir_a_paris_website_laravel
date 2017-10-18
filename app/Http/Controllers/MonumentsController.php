@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Monument;
 use Illuminate\Http\Request;
+use Geocoder;
 
 class MonumentsController extends Controller
 {
@@ -72,6 +73,13 @@ class MonumentsController extends Controller
      */
     public function update(Request $request, Monument $monument)
     {
+        $address = "$request->address $request->city";
+        $geocode = app('geocoder')->geocode('$address, FR')->get();
+        $lng = $geocode->first()->getCoordinates()->getLongitude();
+        $lat = $geocode->first()->getCoordinates()->getLatitude();
+        $monument->lat = $lat;
+        $monument->lng = $lng;
+
         // update Monument        
         $monument->update($request->all());
         return redirect('/home');
